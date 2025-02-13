@@ -1,3 +1,8 @@
+/**
+ * Função para a calculadora
+ * @author Claudio Silva e Yvis Trindade
+ */
+
 function insert(num)
 {
     var numero = document.getElementById('resultado').innerHTML;

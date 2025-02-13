@@ -1,0 +1,21 @@
+{
+    "name": "Calculadora",
+    "short_name": "Calc",
+    "description": "Aplicativo de uma calculadora simples.",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "dir": "ltr",
+    "lang": "pt-BR",
+    "background_color": "#ffffff",
+    "theme_color": "#faa300",
+    "icons": [
+        {
+            "src": "./img/logo.png",  // Logo do aplicativo
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "screenshots": []
+}
