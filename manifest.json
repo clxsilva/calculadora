@@ -10,7 +10,13 @@
     "lang": "pt-BR",
     "background_color": "#ffffff",
     "theme_color": "#faa300",
-    "icons": [],
+    "icons": [
+        {
+            "src": "./img/calc.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
     "screenshots": [
         {
             "src": "/img/screenshot1.png",
