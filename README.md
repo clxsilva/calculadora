@@ -2,7 +2,9 @@
 
 
 # Aplicativo de uma Calculadora
-Aplicativo que basicamente exerce a função de uma calculadora.
+Calculadora simples.
+
+obs: As imagens "screenshot1" e "screenshot2" são um reaproveitamento do aplciativo "Gasolima ou Etanol?" que você pode encontrar aqui no meu perfil. As mesmas são necessárias para o funcionamento e liberação do aplicativo.
 
 ![](img/calculator.jpg)
 
