@@ -2,7 +2,7 @@
     "name": "Calculadora",
     "short_name": "Calc",
     "description": "Aplicativo de uma calculadora simples.",
-    "start_url": "/",
+    "start_url": "/calculadora/",
     "scope": "/",
     "display": "standalone",
     "orientation": "portrait-primary",
@@ -12,25 +12,25 @@
     "theme_color": "#faa300",
     "icons": [
         {
-            "src": "/img/logo.png",
+            "src": "/img/favicon.ico",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/img/logo.png",
+            "src": "/img/favicon.ico",
             "sizes": "512x512",
             "type": "image/png"
         }
     ],
     "screenshots": [
         {
-            "src": "./img/screenshot1.png",
+            "src": "/img/screenshot1.png",
             "sizes": "367x652",
             "type": "image/png",
             "form_factor": "narrow"
         },
         {
-            "src": "./img/screenshot2.png",
+            "src": "/img/screenshot2.png",
             "sizes": "942x667",
             "type": "image/png",
             "form_factor": "wide"

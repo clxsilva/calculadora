@@ -4,41 +4,58 @@
  */
 
 // Instalação (armazenamento em cache)
-self.addEventListener('install', (event) => {
-    console.log("Instalando Service Worker...");
-
+self.addEventListener('install ', (event) => {
     event.waitUntil(
-        caches.open('static')  // Define o nome do cache
-        .then((cache) => {
-            return cache.addAll([
-                '/',  // Página principal
-                '/index.html',  // Arquivo HTML
-                '/style.css',  // Arquivo CSS
-                '/app.js',  // Arquivo JS
-                '/img/logo.png'  // Logo do aplicativo
-            ]);
+        caches.open('static')
+            .then((cache) => {
+                cache.addAll([
+                    '/calculadora/',
+                    '/calculadora/index.html',
+                    '/calculadora/style.css',
+                    '/calculadora/app.js',
+                    '/calculadora/img/favicon.ico'
+                ]);
+kwor            })
+    );
+});
+
+// Ativação - Limpeza de caches antigos
+self.addEventListener('activate', (event) => {
+    const cacheWhitelist = ['static']; // Adicione os nomes das caches que você quer manter
+    event.waitUntil(
+        caches.keys().then((cacheNames) => {
+            return Promise.all(
+                cacheNames.map((cacheName) => {
+                    if (!cacheWhitelist.includes(cacheName)) {
+                        return caches.delete(cacheName); // Limpa caches antigos
+                    }
+                })
+            );
+        }).then(() => {
+            console.log("Cache antigo removido e service worker ativado!");
+            return self.clients.claim();
         })
     );
 });
 
-// Ativação
-self.addEventListener('activate', (event) => {
-    console.log("Service Worker ativado", event);
-    return self.clients.claim();  // Garante que o service worker seja ativado imediatamente
-});
-
-// Interceptação de requisições e resposta com cache quando estiver offline
+// Interceptação de requisições e resposta com cache ou fetch
 self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.match(event.request)
-        .then((response) => {
-            if (response) {
-                console.log('Resposta do cache:', event.request.url);
-                return response;  // Retorna a resposta do cache
-            } else {
-                console.log('Fazendo fetch para:', event.request.url);
-                return fetch(event.request);  // Faz o fetch caso o arquivo não esteja no cache
-            }
-        })
+            .then((response) => {
+                if (response) {
+                    console.log('Resposta do cache:', event.request.url);
+                    return response;  // Retorna do cache
+                } else {
+                    console.log('Fazendo fetch para:', event.request.url);
+                    return fetch(event.request)  // Faz o fetch caso não esteja no cache
+                        .then((fetchResponse) => {
+                            return caches.open('dynamic').then((cache) => {
+                                cache.put(event.request, fetchResponse.clone());  // Armazena no cache dinâmico
+                                return fetchResponse;
+                            });
+                        });
+                }
+            })
     );
 });
