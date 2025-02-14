@@ -1,20 +1,21 @@
 /**
- * Service worker para o aplicativo de calculadora
+ * Service Worker para o aplicativo de calculadora
  * @author Claudio Henrique e Yvis Trindade
  */
 
-// Instalação (cache "armazenamento local")
+// Instalação (armazenamento em cache)
 self.addEventListener('install', (event) => {
+    console.log("Instalando Service Worker...");
+
     event.waitUntil(
-        caches.open('static')
+        caches.open('static')  // Define o nome do cache
         .then((cache) => {
-            // Cache de todos os arquivos necessários
             return cache.addAll([
-                '/',
-                '/index.html',
-                '/style.css',
-                '/app.js',
-                '/img/logo.png'  // A logo do aplicativo
+                '/',  // Página principal
+                '/index.html',  // Arquivo HTML
+                '/style.css',  // Arquivo CSS
+                '/app.js',  // Arquivo JS
+                '/img/logo.png'  // Logo do aplicativo
             ]);
         })
     );
@@ -23,7 +24,7 @@ self.addEventListener('install', (event) => {
 // Ativação
 self.addEventListener('activate', (event) => {
     console.log("Service Worker ativado", event);
-    return self.clients.claim();  // Garantir que o service worker seja ativado imediatamente
+    return self.clients.claim();  // Garante que o service worker seja ativado imediatamente
 });
 
 // Interceptação de requisições e resposta com cache quando estiver offline
@@ -32,11 +33,11 @@ self.addEventListener('fetch', (event) => {
         caches.match(event.request)
         .then((response) => {
             if (response) {
-                // Retorna a resposta do cache, se disponível
-                return response;
+                console.log('Resposta do cache:', event.request.url);
+                return response;  // Retorna a resposta do cache
             } else {
-                // Se não estiver em cache, faz o fetch da requisição normalmente
-                return fetch(event.request);
+                console.log('Fazendo fetch para:', event.request.url);
+                return fetch(event.request);  // Faz o fetch caso o arquivo não esteja no cache
             }
         })
     );
