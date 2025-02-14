@@ -13,8 +13,7 @@ self.addEventListener('install ', (event) => {
                     '/calculadora/index.html',
                     '/calculadora/style.css',
                     '/calculadora/app.js',
-                    '/calculadora/img/favicon.ico'
-                ]);
+                ])
 kwor            })
     );
 });
