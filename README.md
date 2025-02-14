@@ -9,7 +9,7 @@ obs: As imagens "screenshot1" e "screenshot2" são um reaproveitamento do aplica
 ![](img/calculator.jpg)
 
 ## Autor
-Claudio Silva e Yvis Trindade (seu git é: yvistrindade).
+Claudio Silva e Yvis Trindade (owner:yvistrindade).
 ## Download do App
 Escaneie o QRCode para ser redirecionado ao site que hospeda o aplicativo. Adicione à tela inicial e instale o App seguindo as informações do seu smartphone.
 
